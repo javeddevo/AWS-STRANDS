@@ -1,6 +1,6 @@
 # AWS-STRANDS
-AWS Strands
 📚 Resources
+
 [official blog](https://aws.amazon.com/blogs/opensource/introducing-strands-agents-an-open-source-ai-agents-sdk/)
 
 [strands](https://strandsagents.com/latest/documentation/docs/examples/)
