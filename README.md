@@ -7,6 +7,8 @@
 
 [Official Documentation](https://github.com/strands-agents/sdk-python)
 
+[Inbuilt tools](https://github.com/strands-agents/tools)
+
 🚀 Overview
 AWS Strands is an open-source AI agents SDK created by AWS Open Source. It enables developers to build, orchestrate, and deploy intelligent agents that can interact with APIs, services, and workflows.
 
