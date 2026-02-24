@@ -1,0 +1,751 @@
+"""
+=============================================================================
+AWS STRANDS - COMPLETE LEARNING ROADMAP & PRACTICE PROJECTS
+=============================================================================
+
+This document outlines what to learn next and provides practice projects
+organized by difficulty level.
+
+Current Date: February 25, 2026
+Your Experience Level: Intermediate (you've covered basics & patterns)
+
+=============================================================================
+SECTION 1: LEARNING ROADMAP (Priority Order)
+=============================================================================
+
+PHASE 1: MASTERY (You're Here)
+─────────────────────────────
+✅ Basic agent creation
+✅ Built-in tools (calculator, current_time, file_read, file_write)
+✅ Custom @tool decorator
+✅ Agent patterns (A2A, Agent-as-Tool, Graph, Swarm)
+✅ Session management
+✅ MCP integration
+
+NEXT: Phase 2 (below)
+
+
+PHASE 2: ADVANCED CONCEPTS (Start Here!)
+──────────────────────────────────────────
+Timeline: 1-2 weeks
+
+Topics to learn:
+1. Error handling & resilience
+   - Try/catch in agent loops
+   - Timeout management
+   - Retry logic
+   - Graceful degradation
+   
+2. Memory & context management
+   - Conversation windows
+   - Custom memory backends
+   - Context isolation
+   - State management in swarms
+   
+3. Performance optimization
+   - Token counting and optimization
+   - Model selection for different tasks
+   - Cost optimization
+   - Latency reduction
+   
+4. Advanced tool patterns
+   - Tool composition
+   - Conditional tool selection
+   - Tool metadata and routing
+   - Tool validation
+   
+5. Structured outputs
+   - Pydantic models (you touched this!)
+   - Type validation
+   - Response parsing
+   - JSON schema enforcement
+
+Practice Projects:
+→ Build an error-resilient agent
+→ Implement custom memory backend
+→ Create a cost-optimized multi-agent system
+→ Build tool router with semantic search
+
+
+PHASE 3: PRODUCTION READY (2-3 weeks after Phase 2)
+─────────────────────────────────────────────────────
+Topics to learn:
+1. Deployment architectures
+   - AWS Lambda deployment
+   - Fargate deployment
+   - EC2 deployment
+   - Local vs. Cloud agents
+   
+2. Observability & monitoring
+   - OpenTelemetry integration
+   - Metrics collection (you started this!)
+   - Logging best practices
+   - Distributed tracing
+   
+3. Security & compliance
+   - API key management
+   - Input validation
+   - Output sanitization
+   - Audit logging
+   
+4. Scalability
+   - Load balancing
+   - Agent pooling
+   - Rate limiting
+   - Caching strategies
+
+Practice Projects:
+→ Deploy agent to AWS Lambda
+→ Set up OpenTelemetry monitoring
+→ Build a secure multi-tenant agent system
+→ Create a scalable agent pool
+
+
+PHASE 4: EXPERT LEVEL (3+ weeks after Phase 3)
+────────────────────────────────────────────────
+Topics to learn:
+1. A2A Protocol (Agent-to-Agent communication)
+   - Coming soon to Strands
+   - Enable true autonomous agent networks
+   - Cross-organization agents
+   
+2. Custom model providers
+   - Implement custom model adapter
+   - Support new LLM providers
+   - Local model integration
+   
+3. Advanced orchestration
+   - Hierarchical agent systems
+   - Agent specialization
+   - Dynamic agent creation
+   - Knowledge sharing between agents
+   
+4. Real-world applications
+   - RAG (Retrieval Augmented Generation)
+   - Code generation systems
+   - Autonomous task execution
+   - Complex workflow automation
+
+Practice Projects:
+→ Build RAG system with Strands
+→ Create autonomous code generator
+→ Build multi-org agent network
+→ Implement custom model provider
+
+
+=============================================================================
+SECTION 2: PRACTICE PROJECTS BY DIFFICULTY
+=============================================================================
+
+⭐ BEGINNER PROJECTS (1-2 days each)
+─────────────────────────────────────
+
+1. "WEATHER REPORTER"
+What to build:
+- Agent that fetches weather from API
+- Formats and reports it nicely
+- Saves report to file
+
+Skills learned:
+- http_request tool
+- file_write tool
+- Tool composition
+
+Starting point:
+    from strands_tools import http_request, file_write
+    agent = Agent(
+        model=model,
+        tools=[http_request, file_write]
+    )
+    agent("Get weather for New York and save to report.txt")
+
+Variations:
+- Add calculator for temperature conversions
+- Add current_time for timezone awareness
+- Create daily weather summary
+
+
+2. "DATA ANALYZER"
+What to build:
+- Agent reads CSV/JSON files
+- Calculates statistics
+- Generates report
+
+Skills learned:
+- file_read tool
+- calculator tool
+- System prompts for guidance
+
+Starting point:
+    from strands_tools import file_read, calculator, file_write
+    agent = Agent(
+        model=model,
+        tools=[file_read, calculator, file_write]
+    )
+    agent("Read sales.csv, calculate total and average, write summary")
+
+
+3. "CODE FORMATTER"
+What to build:
+- Agent reads code files
+- Analyzes and improves them
+- Saves formatted version
+
+Skills learned:
+- file_read/file_write
+- Custom @tool
+- System prompts
+
+
+⭐⭐ INTERMEDIATE PROJECTS (3-7 days each)
+──────────────────────────────────────────
+
+1. "CUSTOMER SUPPORT ROUTER"
+What to build:
+- Graph pattern: Route customer requests to right agent
+- 3 specialized handlers (Bug, Feature, General)
+- Escalation for complex cases
+
+Skills learned:
+- Graph pattern
+- Routing logic
+- Agent delegation
+- Multi-agent coordination
+
+Structure:
+    intake_agent → (route) → bug_handler
+                        ├→ feature_handler
+                        └→ question_handler
+                            → (if escalate) → escalation_agent
+
+Starter code:
+    Use 03_graph_pattern_example.py as template
+    Customize for your use case
+
+
+2. "CODE REVIEW SWARM"
+What to build:
+- Swarm of specialized code reviewers
+- Security, Performance, Quality experts
+- Architect synthesizes findings
+
+Skills learned:
+- Swarm pattern
+- Peer collaboration
+- Consensus building
+- Result synthesis
+
+Structure:
+    [Security Expert]
+    [Performance Expert]  ← All review code together
+    [Quality Expert]
+    [Architect] ← Synthesizes
+
+Starter code:
+    Use 04_swarm_pattern_example.py as template
+
+
+3. "RESEARCH ASSISTANT"
+What to build:
+- Agent that researches topics
+- Gathers multiple sources
+- Synthesizes findings
+
+Skills learned:
+- http_request tool (API calls)
+- thinking tool (deep analysis)
+- Tool combination
+- Response synthesis
+
+Tasks:
+- Search multiple APIs
+- Analyze results
+- Create structured report
+- Save to file
+
+
+4. "TASK AUTOMATION SYSTEM"
+What to build:
+- Workflow pattern: Automate multi-step tasks
+- Research → Plan → Execute → Verify
+- Handle errors gracefully
+
+Skills learned:
+- Workflow/Graph pattern
+- Error handling
+- State management
+- Progress tracking
+
+
+⭐⭐⭐ ADVANCED PROJECTS (1-2 weeks each)
+───────────────────────────────────────
+
+1. "RAG SYSTEM (Retrieval Augmented Generation)"
+What to build:
+- Agent that:
+  1. Retrieves relevant docs from knowledge base
+  2. Generates answer based on docs
+  3. Cites sources
+  4. Handles follow-up questions with context
+
+Skills learned:
+- retrieve tool (if available) OR http_request to vector DB
+- Session management (context across questions)
+- Custom tool creation
+- Source attribution
+- Knowledge base integration
+
+Architecture:
+    User Question
+        ↓
+    [Retrieve relevant docs]
+        ↓
+    [Generate answer with context]
+        ↓
+    [Format with citations]
+        ↓
+    [Save to session memory]
+
+Technologies:
+- Amazon Bedrock Knowledge Bases OR Pinecone/Weaviate
+- Session management for context
+- Custom retrieval tool
+
+
+2. "AUTONOMOUS CODE GENERATOR"
+What to build:
+- Agent that:
+  1. Understands requirements
+  2. Plans architecture
+  3. Generates code
+  4. Tests code
+  5. Iterates on failures
+
+Skills learned:
+- Multi-step workflows
+- Code generation
+- Error handling
+- Testing integration
+- Iterative improvement
+
+Workflow:
+    Requirement
+        ↓
+    [Plan Architecture] → Think tool
+        ↓
+    [Generate Code] → LLM
+        ↓
+    [Test Code] → Custom tool (pytest)
+        ↓
+    [Analyze failures]
+        ↓
+    [Iterate/Fix]
+
+
+3. "MULTI-AGENT RESEARCH TEAM"
+What to build:
+- Team of specialized researchers:
+  1. Web researcher
+  2. Database analyst
+  3. Market researcher
+  4. Risk analyst
+  5. Team lead (synthesizes)
+
+Skills learned:
+- Advanced Swarm pattern
+- Agent specialization
+- Inter-agent communication
+- Complex coordination
+- Report generation
+
+Structure:
+    User Request
+        ↓
+    [Team Lead]
+        ├→ [Web Researcher]
+        ├→ [DB Analyst]
+        ├→ [Market Researcher]
+        └→ [Risk Analyst]
+        ↓
+    [Team Lead synthesizes all findings]
+        ↓
+    Final Report
+
+
+4. "PRODUCTION AGENT DEPLOYMENT"
+What to build:
+- Production-ready agent system:
+  1. Deploy to AWS Lambda
+  2. Add monitoring/logging
+  3. Implement rate limiting
+  4. Add authentication
+  5. Create API gateway
+
+Skills learned:
+- AWS Lambda deployment
+- OpenTelemetry setup
+- API Gateway integration
+- Error handling
+- Production best practices
+- Observability
+
+Infrastructure:
+    API Gateway → Lambda → Strands Agent → Tools
+                    ↓
+                CloudWatch (Logs)
+                    ↓
+                OpenTelemetry (Metrics)
+
+
+=============================================================================
+SECTION 3: SPECIFIC SKILLS TO PRACTICE
+=============================================================================
+
+🎯 SKILL 1: Error Handling
+──────────────────────────
+Practice this pattern:
+
+from strands import Agent, tool
+
+@tool
+def risky_operation(data: str) -> str:
+    try:
+        # Your operation
+        result = perform_operation(data)
+        return result
+    except ValueError as e:
+        return f"Invalid input: {str(e)}"
+    except TimeoutError as e:
+        return f"Operation timed out: {str(e)}"
+    except Exception as e:
+        return f"Unexpected error: {str(e)}"
+
+agent = Agent(
+    model=model,
+    tools=[risky_operation],
+    system_prompt=
+    If a tool fails, try alternative approaches.
+    Always inform the user of errors clearly.
+    
+)
+
+
+🎯 SKILL 2: Token Optimization
+───────────────────────────────
+Practice:
+    # You already did this in MetricAgent.py!
+    result = agent(query)
+    
+    # Check metrics
+    total_tokens = result.metrics.accumulated_usage['totalTokens']
+    execution_time = sum(result.metrics.cycle_durations)
+    tools_used = list(result.metrics.tool_metrics.keys())
+    
+    print(f"Tokens: {total_tokens}")
+    print(f"Time: {execution_time:.2f}s")
+    print(f"Tools: {tools_used}")
+
+Optimization tips:
+- Use smaller models for simple tasks
+- Batch multiple queries
+- Cache frequent results
+- Use structured outputs to reduce tokens
+
+
+🎯 SKILL 3: Context Management
+────────────────────────────────
+You have this in SessionManagerAgent.py!
+
+Practice extending it:
+    from strands.session.file_session_manager import FileSessionManager
+    
+    session_manager = FileSessionManager(
+        session_id="user_123",
+        storage_dir="./sessions"
+    )
+    
+    agent = Agent(
+        model=model,
+        session_manager=session_manager
+    )
+    
+    # Context persists across calls!
+    agent("My name is Javeed")
+    agent("What's my name?")  # Remember!
+
+
+🎯 SKILL 4: Tool Composition
+──────────────────────────────
+Practice combining tools:
+
+    agent = Agent(
+        model=model,
+        tools=[
+            http_request,      # Get data
+            calculator,        # Analyze
+            file_write,        # Save
+            current_time       # Timestamp
+        ],
+        system_prompt=
+        For analysis tasks"
+        1. Use http_request to fetch data
+        2. Use calculator to analyze
+        3. Include current_time in report
+        4. Use file_write to save
+        
+    )
+
+
+🎯 SKILL 5: Model Selection
+─────────────────────────────
+Practice switching models based on task:
+
+    # For fast/cheap tasks
+    fast_model = GeminiModel(
+        model_id="gemini-2.5-flash",  # Faster, cheaper
+        params={"temperature": 0.3}
+    )
+    
+    # For complex tasks
+    smart_model = GeminiModel(
+        model_id="gemini-2.0-pro",  # Smarter, slower
+        params={"temperature": 0.7}
+    )
+    
+    # Simple queries
+    simple_agent = Agent(model=fast_model)
+    
+    # Complex analysis
+    complex_agent = Agent(model=smart_model)
+
+
+=============================================================================
+SECTION 4: QUICK START - FIRST PROJECT
+=============================================================================
+
+I recommend starting with the "CUSTOMER SUPPORT ROUTER" project.
+
+Here's how:
+
+STEP 1: Copy the template
+    cp 03_graph_pattern_example.py my_support_router.py
+
+STEP 2: Customize agents (modify system prompts)
+    - Make agents specific to YOUR domain
+    - Add custom logic
+    - Adjust routing rules
+
+STEP 3: Test with YOUR data
+    - Run examples with your use case
+    - Refine agent behaviors
+    - Add error handling
+
+STEP 4: Add monitoring
+    - Track metrics
+    - Log decisions
+    - Monitor performance
+
+STEP 5: Deploy
+    - Move to production when ready
+    - Add monitoring
+    - Scale gradually
+
+Expected time: 3-5 days
+
+
+=============================================================================
+SECTION 5: RESOURCES & REFERENCES
+=============================================================================
+
+Official Strands Documentation:
+📖 GitHub: https://github.com/strands-agents/sdk-python
+📖 Website: https://strandsagents.com
+📖 Blog: https://aws.amazon.com/blogs/opensource/introducing-strands-agents/
+📖 Tools: https://github.com/strands-agents/tools
+
+Your Local Resources:
+✅ 01_agent_to_agent_example.py - A2A pattern
+✅ 02_agent_as_tool_example.py - Tool wrapping
+✅ 03_graph_pattern_example.py - Graph workflow
+✅ 04_swarm_pattern_example.py - Swarm collaboration
+✅ 05_builtin_tools_complete_guide.py - All built-in tools
+✅ PROMPT_CRAFTING_GUIDE.py - How to ask me effectively
+
+Existing Examples in Your Workspace:
+✅ TestAgent.py - Basic agent
+✅ ToolsWithAgent.py - Multiple tools
+✅ StructuredAgent.py - Output formatting
+✅ SessionManagerAgent.py - Memory persistence
+✅ MetricAgent.py - Performance monitoring
+✅ ReadWriteAgent.py - File operations
+✅ weserachAgent.py - Web search
+✅ MultiAgent.py - Swarm example
+✅ McpAgent.py - MCP integration
+
+
+=============================================================================
+SECTION 6: NEXT STEPS - WHAT TO DO NOW
+=============================================================================
+
+TODAY:
+1. Review the 5 files I created:
+   ✓ 01_agent_to_agent_example.py
+   ✓ 02_agent_as_tool_example.py
+   ✓ 03_graph_pattern_example.py
+   ✓ 04_swarm_pattern_example.py
+   ✓ 05_builtin_tools_complete_guide.py
+
+2. Run them:
+   python 01_agent_to_agent_example.py
+   python 05_builtin_tools_complete_guide.py
+
+3. Understand the output
+
+
+THIS WEEK:
+1. Pick ONE beginner project from Section 2
+2. Build it (1-2 days)
+3. Test it thoroughly
+4. Document what you learned
+
+
+NEXT WEEK:
+1. Start ONE intermediate project
+2. Practice error handling
+3. Add session management
+4. Implement monitoring
+
+
+NEXT MONTH:
+1. Build advanced project
+2. Deploy to AWS
+3. Set up production monitoring
+4. Join Strands community (GitHub discussions)
+
+
+=============================================================================
+SECTION 7: COMMON MISTAKES TO AVOID
+=============================================================================
+
+❌ MISTAKE 1: Not reading tool documentation
+   Tool parameters matter! Each tool has specific inputs/outputs
+   Solution: Check strands-agents-tools documentation
+
+❌ MISTAKE 2: Not using system prompts effectively
+   System prompts guide which tools to use when
+   Solution: Write clear, specific system prompts
+
+❌ MISTAKE 3: Ignoring error handling
+   Agents will fail. Plan for it!
+   Solution: Implement try/catch and retry logic
+
+❌ MISTAKE 4: Not optimizing tokens
+   Tokens = money. Watch your spending!
+   Solution: Use metrics to track and optimize
+
+❌ MISTAKE 5: Not persisting context
+   Each agent call starts fresh
+   Solution: Use SessionManager for memory
+
+❌ MISTAKE 6: Building without monitoring
+   You won't know when things break
+   Solution: Add logging and metrics from start
+
+❌ MISTAKE 7: Mixing too many tools
+   Too many options confuses the agent
+   Solution: Give only relevant tools per agent
+
+❌ MISTAKE 8: Not validating outputs
+   Agents can hallucinate or error
+   Solution: Validate and sanitize outputs
+
+
+=============================================================================
+SECTION 8: YOUR LEARNING CHECKLIST
+=============================================================================
+
+PHASE 1 (Basics) - ✅ COMPLETED
+─────────────────────────────
+☑ Understanding Agent basics
+☑ Using built-in tools
+☑ Creating custom @tools
+☑ Session management
+☑ Multi-agent patterns (A2A, Graph, Swarm)
+☑ MCP integration
+
+
+PHASE 2 (Advanced) - 🚀 START HERE
+──────────────────────────────────
+☐ Error handling & resilience
+☐ Memory backend customization
+☐ Performance optimization
+☐ Advanced tool patterns
+☐ Structured output validation
+☐ Metrics & observability
+☐ Build 1-2 beginner projects
+☐ Build 1 intermediate project
+
+
+PHASE 3 (Production)
+────────────────────
+☐ AWS Lambda deployment
+☐ OpenTelemetry monitoring
+☐ Security & authentication
+☐ Rate limiting
+☐ Load balancing
+☐ Production best practices
+☐ Build production system
+
+
+PHASE 4 (Expert)
+────────────────
+☐ A2A Protocol (when released)
+☐ Custom model providers
+☐ Advanced orchestration
+☐ RAG systems
+☐ Complex workflows
+☐ Real-world applications
+
+
+=============================================================================
+FINAL ADVICE
+=============================================================================
+
+1. START SMALL
+   Begin with a simple project. Build confidence.
+   Then tackle harder problems.
+
+2. READ CODE EXAMPLES
+   The files I created show patterns.
+   Study them. Modify them. Learn from them.
+
+3. EXPERIMENT
+   Change things. Break things. Learn.
+   This is the best way to internalize concepts.
+
+4. ITERATE
+   Your first version won't be perfect.
+   That's OK. Improve it gradually.
+
+5. BUILD THINGS
+   Real projects teach more than reading.
+   Build something you care about.
+
+6. ASK QUESTIONS
+   When stuck, ask me specifically.
+   Use the PROMPT_CRAFTING_GUIDE for effective prompts.
+
+7. SHARE & LEARN
+   Share your projects in GitHub/communities.
+   Learn from others doing the same.
+
+8. KEEP LEARNING
+   Strands is evolving. Stay updated.
+   New features coming (A2A protocol, etc.)
+
+
+Good luck! 🚀 You're on the right track!
+"""
+
+if __name__ == "__main__":
+    print(__doc__)
