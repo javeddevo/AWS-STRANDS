@@ -1,6 +1,6 @@
 from strands import Agent
 from strands.models.gemini import GeminiModel
-from dotenv import load_dotenv
+from dotenv import load_dotenv 
 import os
 
 # from strands_tools import calculator, current_time
