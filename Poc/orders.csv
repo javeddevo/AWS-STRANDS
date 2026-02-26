@@ -1,0 +1,11 @@
+order_id,customer_email,order_date,order_status,items_json,total_amount,currency,tracking_number,carrier,est_delivery,shipping_address,is_returnable,last_update_note
+1001,alice.smith@email.com,10-05-2024,Delivered,"[{'item': 'Wireless Mouse', 'qty': 1, 'price': 25.00}]",30.5,USD,1Z999AA1,UPS,14-05-2025,"123 Maple St, NY, 10001",TRUE,Package left at front door
+1002,bob.jones@email.com,12-05-2024,Shipped,"[{'item': 'Mechanical Keyboard', 'qty': 1, 'price': 85.00}]",92,USD,7822345,FedEx,18-05-2024,"456 Oak Ave, CA, 90210",TRUE,In transit: Arrived at Memphis Hub
+1003,charlie.brown@email.com,14-05-2024,Processing,"[{'item': 'USB-C Hub', 'qty': 2, 'price': 15.00}]",35,USD,PENDING,None,20-05-2024,"789 Pine Rd, TX, 73301",TRUE,Payment verified; preparing for shipment
+1004,diana.prince@email.com,11-05-2024,Delayed,"[{'item': 'Gaming Monitor', 'qty': 1, 'price': 299.00}]",320,USD,9988776,DHL,16-05-2024,"10-B Amazon Way, WA, 98101",TRUE,Held at customs for inspection
+1005,evan.peters@email.com,01-05-2024,Returned,"[{'item': 'Blue Hoodie - L', 'qty': 1, 'price': 45.00}]",50,USD,4455667,UPS,05-05-2024,"55 Birch Blvd, FL, 33101",FALSE,Refund processed to original payment method
+1006,fiona.gallagher@email.com,15-05-2024,Cancelled,"[{'item': 'Coffee Maker', 'qty': 1, 'price': 60.00}]",65,USD,NONE,None,06-05-2024,"12 South Side, IL, 60601",FALSE,Cancelled by customer before shipping
+1007,george.costanza@email.com,13-05-2024,Out for Delivery,"[{'item': 'Leather Wallet', 'qty': 1, 'price': 40.00}]",45,USD,2233445,FedEx,15-05-2024,"1344 Queens Blvd, NY, 11101",TRUE,On delivery vehicle; expected by 8PM
+1008,hannah.abbot@email.com,08-05-2024,Delivered,"[{'item': 'Running Shoes', 'qty': 1, 'price': 120.00}]",130,USD,6677889,UPS,12-05-2024,"987 Hogsmeade Ln, UK",TRUE,Signed for by neighbor (Mrs. Norris)
+1009,ian.wright@email.com,14-05-2024,Damaged,"[{'item': 'Ceramic Vase', 'qty': 1, 'price': 55.00}]",65,USD,1122334,DHL,16-05-2024,"22 High St, London, UK",TRUE,Customer reported broken item; return label sent
+1010,jane.doe@email.com,15-05-2024,Shipped,"[{'item': 'Smartphone Case', 'qty': 1, 'price': 20.00}]",25,USD,5566778,FedEx,19-05-2024,"111 Main St, NY, 10002",TRUE,Departed shipping facility
